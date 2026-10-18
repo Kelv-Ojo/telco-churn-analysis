@@ -1,0 +1,7 @@
+{
+  "customers": 7043,
+  "churned": 1869,
+  "churn_pct": 26.536987079369588,
+  "missing_total_charges": 11,
+  "missing_total_charges_all_zero_tenure": true
+}
