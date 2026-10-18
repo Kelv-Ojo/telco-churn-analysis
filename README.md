@@ -14,6 +14,22 @@ A new portfolio case study using a dataset already in my project files, built wi
 
 ![Contract and tenure segments](reports/segment_heatmap.png)
 
+## Worked example: contract comparison
+
+**Question:** How do churn proportions differ by contract type?
+
+```sql
+SELECT Contract, COUNT(*) AS customers,
+       SUM(churn_flag) AS churned,
+       ROUND(100.0 * SUM(churn_flag) / COUNT(*), 1) AS churn_pct
+FROM customers
+GROUP BY Contract;
+```
+
+**Result:** month-to-month contracts have **42.7%** churn in this sample, compared with **2.8%** for two-year contracts. The denominator is customers within each contract group; the in-memory customers table is created by `src/analyze.py`.
+
+**Interpretation:** investigate differences in tenure and customer mix before proposing an intervention. This does not prove that extending a contract reduces churn. [Counts and intervals](reports/contract_summary.csv).
+
 ## Reproduce
 
 From this repository's root, using Python 3.10 or later:
@@ -53,3 +69,7 @@ Dataset: `WA_Fn-UseC_-Telco-Customer-Churn.csv`, the IBM Telco educational sampl
 This is an educational sample, not a live company engagement. No timestamp, acquisition cohort, margin or intervention data is supplied. Churn proportions are cross-sectional and must not be presented as monthly churn hazards. The chart intervals are descriptive: the sample does not establish population representativeness, and confounding and multiple comparisons limit inference. No prediction accuracy, causal retention effect, forecast revenue loss or realized savings is claimed.
 
 **Proposed next step:** investigate onboarding friction in high-churn segments, then evaluate a randomized retention pilot using incremental retention and contribution margin after offer costs.
+
+## Automated validation
+
+[Validation runs](https://github.com/Kelv-Ojo/telco-churn-analysis/actions/workflows/validate.yml) rebuild the analysis and check source fingerprints and fixed-snapshot totals. See [reproduction instructions and dependency pins](REPRODUCIBILITY.md). Python checks do not certify native Excel or Power BI behaviour.
