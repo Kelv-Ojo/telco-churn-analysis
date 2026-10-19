@@ -13,6 +13,7 @@ elif (root/'data/provenance.json').exists():
     if hashlib.sha256((root/'data/bookings.csv.zip').read_bytes()).hexdigest()!=expected_hash:
         raise ValueError('Input fingerprint changed: bookings.csv.zip')
 subprocess.run([sys.executable,str(root/'src/analyze.py')],cwd=root,check=True)
+subprocess.run([sys.executable,str(root/'src/tenure_sensitivity.py')],cwd=root,check=True)
 actual=json.loads((root/'reports/metrics.json').read_text())
 expected=json.loads((root/'validation-baseline.json').read_text())
 for key,value in expected.items():
