@@ -30,6 +30,14 @@ GROUP BY Contract;
 
 **Interpretation:** investigate differences in tenure and customer mix before proposing an intervention. This does not prove that extending a contract reduces churn. [Counts and intervals](reports/contract_summary.csv).
 
+## Does customer tenure explain the gap?
+
+A follow-up [tenure sensitivity analysis](reports/tenure_sensitivity.md) compares every contract type using the same pooled tenure-band distribution. The month-to-month versus two-year gap changes from **39.88 to 35.59 percentage points**. The association remains, but its size depends on customer mix; this does not estimate the causal effect of switching contracts.
+
+[Reproducible Python and SQL checks](src/tenure_sensitivity.py) · [Observed and standardised results](reports/tenure_standardisation.csv) · [Band weights and denominators](reports/tenure_standardisation_detail.csv)
+
+Run `python src/tenure_sensitivity.py` to regenerate the comparison. It uses the Python standard library and runs in automated validation alongside the original analysis.
+
 ## Reading the results
 
 Start with [findings and the proposed pilot](reports/findings.md), then inspect [contract counts and intervals](reports/contract_summary.csv) before comparing rates. Use the [contract-and-tenure results](reports/contract_tenure_segments.csv) to examine how customer mix could affect the overall comparison.
