@@ -30,6 +30,12 @@ GROUP BY Contract;
 
 **Interpretation:** investigate differences in tenure and customer mix before proposing an intervention. This does not prove that extending a contract reduces churn. [Counts and intervals](reports/contract_summary.csv).
 
+## Reading the results
+
+Start with [findings and the proposed pilot](reports/findings.md), then inspect [contract counts and intervals](reports/contract_summary.csv) before comparing rates. Use the [contract-and-tenure results](reports/contract_tenure_segments.csv) to examine how customer mix could affect the overall comparison.
+
+A segment's churn denominator includes all customers in that segment, including the 11 customers with missing TotalCharges. These are sample churn proportions, not monthly churn rates. Before recommending an offer, specify a control group, a measurement window and contribution margin after offer costs. The current dataset cannot estimate the causal effect of that offer.
+
 ## Reproduce
 
 From this repository's root, using Python 3.10 or later:
