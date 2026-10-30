@@ -1,8 +1,14 @@
 # Telco Customer Churn Analysis
 
+**Start here:** [Contract counts and intervals](reports/contract_summary.csv) → [tenure sensitivity](reports/tenure_sensitivity.md) → [SQL](sql/segments.sql)
+
+[Findings](#findings) · [Contract comparison](#worked-example-contract-comparison) · [Tenure mix](#does-customer-tenure-explain-the-gap) · [Reproduce](#reproduce) · [Limits](#source-and-limitations)
+
 **Question:** Which customer segments show higher churn in the IBM Telco sample, and what retention hypotheses should a business test?
 
 A new portfolio case study using a dataset already in my project files, built with AI assistance. It demonstrates data quality handling, Python analysis, SQL CTEs and window functions, segment comparisons, uncertainty and practical recommendations.
+
+**Definition:** churn means the dataset labels a customer as having left the service (`Churn = Yes`). The file does not provide an observation window, so this is a sample label, not a measured monthly churn rate. This project uses descriptive analysis, not a trained churn-prediction model.
 
 ## Findings
 
@@ -87,3 +93,14 @@ This is an educational sample, not a live company engagement. No timestamp, acqu
 ## Automated validation
 
 [Validation runs](https://github.com/Kelv-Ojo/telco-churn-analysis/actions/workflows/validate.yml) rebuild the analysis and check source fingerprints and fixed-snapshot totals. See [reproduction instructions and dependency pins](REPRODUCIBILITY.md). Python checks do not certify native Excel or Power BI behaviour.
+
+
+## Portfolio review notes
+
+The headline contract comparison is cross-sectional. The tenure-standardised gap is a sensitivity analysis, not a causal effect. Keep all customers in segment denominators, including the 11 missing TotalCharges values. Before a retention trial, specify a control group, observation window and contribution margin after offer cost.
+
+## Business context and skills
+
+A retention team needs to distinguish high-churn groups from causal explanations. The public sample supports descriptive comparisons and a proposed pilot, not an implemented retention programme.
+
+**Skills demonstrated:** SQL segmentation; pandas cleaning; uncertainty intervals; tenure sensitivity; evidence-based retention questions.
