@@ -10,15 +10,27 @@ A new portfolio case study using a dataset already in my project files, built wi
 
 **Definition:** churn means the dataset labels a customer as having left the service (`Churn = Yes`). The file does not provide an observation window, so this is a sample label, not a measured monthly churn rate. This project uses descriptive analysis, not a trained churn-prediction model.
 
+
+
+
+## Visual evidence
+
+![Observed churn by contract type in the 7,043-customer sample](assets/screenshots/contract-churn.png)
+
+Observed churn by contract type in the 7,043-customer sample. This comparison is descriptive and does not establish a contract effect.
+
+![Churn comparisons by contract and tenure, exposing a confounder behind the overall contract comparison](assets/screenshots/segment-heatmap.png)
+
+Churn comparisons by contract and tenure, exposing a confounder behind the overall contract comparison.
+
+Images are static previews. Open them at full size for detail; follow the reproduction notes to inspect the underlying work.
+
+
 ## Findings
 
 - **1,869 of 7,043 customers (26.5%)** are labelled churned.
 - Contract type and tenure identify groups worth investigating. The comparisons are associations, not evidence that changing contracts prevents churn.
 - **11 blank TotalCharges values** belong to customers with zero tenure. They remain missing and those customers stay in churn denominators.
-
-![Churn by contract type](reports/contract_churn.png)
-
-![Contract and tenure segments](reports/segment_heatmap.png)
 
 ## Worked example: contract comparison
 
@@ -104,3 +116,7 @@ The headline contract comparison is cross-sectional. The tenure-standardised gap
 A retention team needs to distinguish high-churn groups from causal explanations. The public sample supports descriptive comparisons and a proposed pilot, not an implemented retention programme.
 
 **Skills demonstrated:** SQL segmentation; pandas cleaning; uncertainty intervals; tenure sensitivity; evidence-based retention questions.
+
+## Portfolio evidence and interview summary
+
+**Demonstrated:** cleaning, SQL segmentation, denominators and uncertainty. Month-to-month: 1,655 churn labels among 3,875 customers (42.7%); two-year: 48 among 1,695 (2.8%). One-year: 166 among 1,473 (11.3%). These reconcile to 7,043 customers and 1,869 churn labels. The source lacks an observation window, so these are sample proportions rather than monthly rates. Review tenure_sensitivity.md before interpreting contract differences. A retention intervention is a hypothesis requiring prospective evaluation; this descriptive project does not establish that changing a contract prevents churn.
